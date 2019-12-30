@@ -1,0 +1,27 @@
+
+# Modules
+node_modules
+
+# Dist
+dist
+
+# Config file
+config.js
+
+/node_modules
+/test/js
+/test/browsertest/js
+/test/fixtures/temp-*
+/test/temp
+/test/ChangesAndRemovals
+/benchmark/js
+/benchmark/fixtures
+/examples/**/dist
+/coverage
+.DS_Store
+*.log
+.idea
+.vscode
+.cache
+.eslintcache
+package-lock.json
