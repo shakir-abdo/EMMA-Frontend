@@ -11,5 +11,10 @@ let httpServices = require("./handler/httpServices");
 let config = require("../config.js");
 
 // Logic
-const sendButton = document.getElementById('sendButton');
-sendButton.addEventListener('click', () => httpServices.httpGet(config.default.RestAPIURL));
+const input = document.getElementById('input');
+input.addEventListener('keyup', (event) => {
+    // Number 13 is the "Enter" key on the keyboard
+    if (event.keyCode === 13) {
+        document.getElementById('response').innerHTML = httpServices.httpGet(config.default.RestAPIURL);
+    }
+  });
