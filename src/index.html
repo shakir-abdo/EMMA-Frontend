@@ -5,15 +5,32 @@
 </head>
 
 <body>
-    <div id="container">
-        <input type="text" id="input" placeholder="Input...">
-        <button id="sendButton">Get Emotion</button>
+    <pre>
+>./startEmma.sh
+// ====================== //
+// = Copyright (c) EMMA   //
+// ====================== //
+__          ________ _      _____ ____  __  __ ______   _______ ____  
+\ \        / /  ____| |    / ____/ __ \|  \/  |  ____| |__   __/ __ \ 
+ \ \  /\  / /| |__  | |   | |   | |  | | \  / | |__       | | | |  | |
+  \ \/  \/ / |  __| | |   | |   | |  | | |\/| |  __|      | | | |  | |
+   \  /\  /  | |____| |___| |___| |__| | |  | | |____     | | | |__| |
+    \/  \/   |______|______\_____\____/|_|  |_|______|    |_|  \____/ 
+                 |  ____| |  \/  | |  \/  |     /\                    
+                 | |__    | \  / | | \  / |    /  \                   
+                 |  __|   | |\/| | | |\/| |   / /\ \                  
+                 | |____ _| |  | |_| |  | |_ / ____ \ _               
+                 |______(_)_|  |_(_)_|  |_(_)_/    \_(_) 
+    </pre>
+    <div class="customRow">
+        <span style="margin-right: 0.5rem;">></span>
+        <input class="cmdline" id="input">
     </div>
     <div>
         <p id="response"></p>
     </div>
     <script src="<%= htmlWebpackPlugin.files.chunks.main.entry %>"></script>
-</body >
+</body>
 <script src="./index.js"></script>
 
 </html>
