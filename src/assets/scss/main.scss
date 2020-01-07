@@ -1,0 +1,155 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&display=swap&subset=cyrillic,greek,vietnamese');
+
+/* ====================== */
+/* = Copyright (c) EMMA = */
+/* ====================== */
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+body, html {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    width: 100%;
+    background: rgb(61, 61, 61);
+}
+
+/* Header */
+
+header {
+    width: 100%;
+    height: 400px;
+    background: #101010;
+    position: relative;
+    z-index: 10;
+
+    -webkit-transform: translateZ(100px);
+    transform: translateZ(100px);
+    -webkit-animation: step-one-title-in 1.3s;
+    animation: step-one-title-in 1.3s;
+
+    canvas {
+        width: 100%;
+        height: 100%;
+        z-index: 5;
+        position: relative;
+    }
+
+    .inner {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        z-index: 10;
+        transform: translate(-50%, -50%);
+
+        img {
+            width: 210px;
+            height: auto;
+
+            animation: fadein 2s;
+            -moz-animation: fadein 2s;
+            -webkit-animation: fadein 2s;
+            -o-animation: fadein 2s;
+        }
+
+        p {
+            text-align: center;
+            color: #FFF;
+            font-size: 35px;
+            padding: 10px;
+            overflow: hidden;
+            max-height: 61px;
+            height: 61px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            
+            span.emma-cursor {
+                display: inline-block;
+                background-color: #CCC;
+                margin-left: 0.1rem;
+                width: 3px;
+                animation: blink 1s infinite;
+            }
+            
+            span.emma-cursor.typing {
+                animation: none;
+            }
+        }
+    }
+
+    img.bottom-svg {
+        position: absolute;
+        height: 120px;
+        width: 50%;
+        bottom: 0;
+        z-index: 30;
+
+        &.left-svg {
+            left: 0;
+        }
+
+        &.right-svg {
+            right: 0;
+        }
+    }
+}
+
+/* Animations */
+
+@keyframes blink {
+    0%  { 
+        background-color: #CCC; 
+    }
+    49% { 
+        background-color: #CCC; 
+    }
+    50% { 
+        background-color: transparent; 
+    }
+    99% { 
+        background-color: transparent; 
+    }
+    100%  { 
+        background-color: #CCC; 
+    }
+}
+
+@keyframes fadein {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@-moz-keyframes fadein {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes fadein {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@-o-keyframes fadein {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
