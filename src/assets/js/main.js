@@ -173,7 +173,7 @@
     }
 
     function handleInputChange(){
-        $(".input-wrapper > span.input-highlight").text($(this).val());
+        $(".input-wrapper > span.input-highlight").html($(this).val().replace(/\n/g, "&nbsp;"));
     }
     
     $(document).ready(function(){
