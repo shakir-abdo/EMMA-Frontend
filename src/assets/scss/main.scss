@@ -125,6 +125,10 @@ main {
         width: 500px;
         margin: 0 auto;
 
+        label {
+            display: none;
+        }
+
         input {
             height: 60px;
             width: 100%;
