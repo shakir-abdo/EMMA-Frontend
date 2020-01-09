@@ -49,17 +49,24 @@
                 <input placeholder="Enter text..." value="" spellcheck="false">
                 <span class="input-highlight"></span>
             </div>
-            <div class="evaluate-wrap">
-                <button class="evaluate">
-                    Evaluate
-                    <span class="icon-right"></span>
-                    <span class="icon-right after"></span>
-                </button>
+            <div class="loader" style="opacity: 0;">&nbsp;</div>
+            <div class="results-wrap">
+                <div class="results">
+                    <div class="value">
+                        <p class="tone">Emotion tone:</p><span class="tone-result">N/A</span>
+                    </div>
+                    <div class="value">
+                        <p class="value">Emotion value: </p><span class="value-result">N/A</span>
+                    </div>
+                    <div class="value">
+                        <p class="percentage">Emotion percentage: </p><span class="percentage-result">N/A</span>
+                    </div>
+                </div>
             </div>
         </main>
-        <footer>
-
-        </footer>
+        <script src="assets/js/particleInit.js"></script>
+        <script src="assets/js/headerTyper.js"></script>
+        <script src="assets/js/inputDesign.js"></script>
         <script src="assets/js/main.js"></script>
     </body>
 </html>
