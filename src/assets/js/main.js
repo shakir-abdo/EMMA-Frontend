@@ -116,8 +116,8 @@
         });
     }
 
-    let typedTextSpan = document.querySelector(".emma-typer");
-    let cursorSpan = document.querySelector(".emma-cursor");
+    let $typedTextSpan = $(".emma-typer");
+    let $cursorSpan = $(".emma-cursor");
 
     let textArray = [
         "EMMA",
@@ -131,7 +131,11 @@
         "EMMA",
         "艾瑪",
         "EMMA",
-        "إيما"
+        "إيما",
+        "EMMA",
+        "אמה",
+        "EMMA",
+        "Эмма"
     ];
 
     let typingDelay = 90;
@@ -142,28 +146,28 @@
 
     function type(){
         if (charIndex < textArray[textArrayIndex].length){
-            if (!cursorSpan.classList.contains("typing")) cursorSpan.classList.add("typing");
-            typedTextSpan.textContent += textArray[textArrayIndex].charAt(charIndex);
+            if (!$cursorSpan.hasClass("typing")) $cursorSpan.addClass("typing");
+            $typedTextSpan.append(textArray[textArrayIndex].charAt(charIndex));
             charIndex++;
             setTimeout(type, typingDelay);
         } 
         else {
-            cursorSpan.classList.remove("typing");
+            $cursorSpan.removeClass("typing");
             setTimeout(erase, newTextDelay);
         }
     }
 
     function erase(){
         if (charIndex > 0){
-            if (!cursorSpan.classList.contains("typing")) cursorSpan.classList.add("typing");
-            typedTextSpan.textContent = textArray[textArrayIndex].substring(0, charIndex-1);
+            if (!$cursorSpan.hasClass("typing")) $cursorSpan.addClass("typing");
+            $typedTextSpan.text(textArray[textArrayIndex].substring(0, charIndex - 1));
             charIndex--;
             setTimeout(erase, erasingDelay);
         } 
         else {
-            cursorSpan.classList.remove("typing");
+            $cursorSpan.removeClass("typing");
             textArrayIndex++;
-            if (textArrayIndex>=textArray.length) textArrayIndex=0;
+            if (textArrayIndex >= textArray.length) textArrayIndex = 0;
             setTimeout(type, typingDelay + 1100);
         }
     }
