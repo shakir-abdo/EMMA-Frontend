@@ -69,6 +69,17 @@
                 "opacity": "1"
             }, 100);
         });
+
         $(".input-wrapper > input").on("input", debounce(fetchResults, 900));
+
+        // Open external links in new tab
+        $("a").attr("target", function(){
+            if (this.host && this.host != location.host) return "_blank";
+        });
+
+        // Add No-Opener attribute to links for security reasons
+        $("a").attr("rel", function(){
+            if (this.host && this.host != location.host) return "noopener";
+        });
     });
 })(jQuery);
