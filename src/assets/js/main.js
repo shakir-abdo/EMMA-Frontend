@@ -6,179 +6,69 @@
     // = Copyright (c) EMMA = //
     // ====================== //
 
-    var particlesJS = particlesJS || window.particlesJS;
+    function debounce(fn, wait, immediate){
+        var timeout;
 
-    function initParticles(){
-        particlesJS("bg-animation", {
-            "particles": {
-                "number": {
-                    "value": 250,
-                    "density": {
-                        "enable": true,
-                        "value_area": 900
-                    }
-                },
-                "color": {
-                    "value": "#ffffff"
-                },
-                "shape": {
-                    "type": "circle",
-                    "stroke": {
-                        "width": 0,
-                        "color": "#000000"
-                    },
-                    "polygon": {
-                        "nb_sides": 5
-                    }
-                },
-                "opacity": {
-                    "value": 0.5,
-                    "random": false,
-                    "anim": {
-                        "enable": false,
-                        "speed": 1,
-                        "opacity_min": 0.1,
-                        "sync": false
-                    }
-                },
-                "size": {
-                    "value": 2,
-                    "random": true,
-                    "anim": {
-                        "enable": false,
-                        "speed": 40,
-                        "size_min": 0.1,
-                        "sync": false
-                    }
-                },
-                "line_linked": {
-                    "enable": true,
-                    "distance": 150,
-                    "color": "#ffffff",
-                    "opacity": 0.4,
-                    "width": 1
-                },
-                "move": {
-                    "enable": true,
-                    "speed": 2,
-                    "direction": "none",
-                    "random": false,
-                    "straight": false,
-                    "out_mode": "out",
-                    "bounce": false,
-                    "attract": {
-                        "enable": false,
-                        "rotateX": 600,
-                    "rotateY": 1200
-                    }
-                }
-            },
-            "interactivity": {
-                "detect_on": "window",
-                "events": {
-                    "onhover": {
-                        "enable": true,
-                        "mode": "grab"
-                    },
-                    "onclick": {
-                        "enable": false,
-                        "mode": "push"
-                    },
-                    "resize": true
-                },
-                "modes": {
-                    "grab": {
-                        "distance": 150,
-                        "line_linked": {
-                            "opacity": 1
-                        }
-                    },
-                    "bubble": {
-                        "distance": 400,
-                        "size": 40,
-                        "duration": 2,
-                        "opacity": 8,
-                        "speed": 3
-                    },
-                    "repulse": {
-                        "distance": 200,
-                        "duration": 0.4
-                    },
-                    "push": {
-                        "particles_nb": 4
-                    },
-                    "remove": {
-                        "particles_nb": 2
-                    }
-                }
-            },
-            "retina_detect": true
+        return function(){
+            var context = this;
+            var args = arguments;
+
+            var later = function(){
+                timeout = null;
+                if (!immediate) fn.apply(context, args);
+            };
+
+            var callNow = immediate && !timeout;
+
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+
+            if (callNow) fn.apply(context, args);
+        }
+    }
+
+    function getEscapedFromInput(){
+        var val = $(".input-wrapper > input").val();
+        return encodeURIComponent(val);
+    }
+
+    function fetchResults(){
+        var str = getEscapedFromInput();
+
+        if (str.replace(/\s/g, "") === ""){
+            $(".loader").animate({
+                "opacity": "0"
+            }, 100);
+
+            $(".results .value > span").each(function(){
+                $(this).text("N/A").attr("data-emotion", "");
+            });
+
+            return;
+        }
+
+        $.getJSON("https://emma-ai.com/api/?text=" + str, function(data){
+            $(".results .value > span").attr("data-emotion", data.emotion_tone);
+            $(".results .value > span.tone-result").text(data.emotion_tone);
+            $(".results .value > span.value-result").text(data.emotion_value);
+            $(".results .value > span.percentage-result").text(data.emotion_percentage);
+        }).fail(function(){
+            $(".results .value > span").each(function(){
+                $(this).text("Error").attr("data-emotion", "error");
+            });
+        }).always(function(){
+            $(".loader").animate({
+                "opacity": "0"
+            }, 100);
         });
     }
 
-    let $typedTextSpan = $(".emma-typer");
-    let $cursorSpan = $(".emma-cursor");
-
-    let textArray = [
-        "EMMA",
-        "エマ",
-        "EMMA",
-        "έμμα",
-        "EMMA",
-        "えま",
-        "EMMA",
-        "एम्मा",
-        "EMMA",
-        "艾瑪",
-        "EMMA",
-        "إيما",
-        "EMMA",
-        "אמה",
-        "EMMA",
-        "Эмма"
-    ];
-
-    let typingDelay = 90;
-    let erasingDelay = 30;
-    let newTextDelay = 1300;
-    let textArrayIndex = 0;
-    let charIndex = 0;
-
-    function type(){
-        if (charIndex < textArray[textArrayIndex].length){
-            if (!$cursorSpan.hasClass("typing")) $cursorSpan.addClass("typing");
-            $typedTextSpan.append(textArray[textArrayIndex].charAt(charIndex));
-            charIndex++;
-            setTimeout(type, typingDelay);
-        } 
-        else {
-            $cursorSpan.removeClass("typing");
-            setTimeout(erase, newTextDelay);
-        }
-    }
-
-    function erase(){
-        if (charIndex > 0){
-            if (!$cursorSpan.hasClass("typing")) $cursorSpan.addClass("typing");
-            $typedTextSpan.text(textArray[textArrayIndex].substring(0, charIndex - 1));
-            charIndex--;
-            setTimeout(erase, erasingDelay);
-        } 
-        else {
-            $cursorSpan.removeClass("typing");
-            textArrayIndex++;
-            if (textArrayIndex >= textArray.length) textArrayIndex = 0;
-            setTimeout(type, typingDelay + 1100);
-        }
-    }
-
-    function handleInputChange(){
-        $(".input-wrapper > span.input-highlight").html($(this).val().replace(/\n/g, "&nbsp;"));
-    }
-    
     $(document).ready(function(){
-        initParticles();
-        setTimeout(type, newTextDelay + 250);
-        $(".input-wrapper > input").on("input", handleInputChange);
+        $(".input-wrapper > input").on("input", function(){
+            $(".loader").animate({
+                "opacity": "1"
+            }, 100);
+        });
+        $(".input-wrapper > input").on("input", debounce(fetchResults, 900));
     });
 })(jQuery);
