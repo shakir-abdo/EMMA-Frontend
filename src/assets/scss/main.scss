@@ -118,6 +118,7 @@ header {
 
 main {
     margin-top: 60px;
+    margin-bottom: 100px;
 
     .input-wrapper {
         position: relative;
@@ -236,6 +237,41 @@ main {
             span[data-emotion="neutral"]{
                 color: rgb(255, 184, 32);
             }
+        }
+    }
+}
+
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70px;
+    background: $header-color;
+    z-index: 20;
+
+    p.copyright {
+        text-align: center;
+        color: #CCC;
+        font-size: 15px;
+
+        a {
+            color: #CCC;
+            text-decoration: underline solid #CCC;
+            transition: text-decoration 0.3s ease;
+        }
+
+        a:hover {
+            color: #CCC;
+            text-decoration: underline solid transparent;
+        }
+
+        span {
+            margin-top: 5px;
+            display: block;
         }
     }
 }
