@@ -4,6 +4,18 @@
 /* = Copyright (c) EMMA = */
 /* ====================== */
 
+/*-------------*/
+/*- Variables -*/
+/*-------------*/
+
+$site-color: rgb(61, 61, 61);
+$header-color: #101010;
+$cursor-color: #CCC;
+
+/*--------*/
+/*- Root -*/
+/*--------*/
+
 body {
     font-family: 'Roboto', sans-serif;
 }
@@ -13,15 +25,17 @@ body, html {
     margin: 0;
     height: 100%;
     width: 100%;
-    background: rgb(61, 61, 61);
+    background: $site-color;
 }
 
-/* Header */
+/*----------+/
+/*- Header -*/
+/*----------*/
 
 header {
     width: 100%;
     height: 400px;
-    background: #101010;
+    background: $header-color;
     position: relative;
     z-index: 10;
 
@@ -69,7 +83,7 @@ header {
             
             span.emma-cursor {
                 display: inline-block;
-                background-color: #CCC;
+                background-color: $cursor-color;
                 margin-left: 0.1rem;
                 width: 3px;
                 animation: blink 1s infinite;
@@ -98,14 +112,65 @@ header {
     }
 }
 
-/* Animations */
+/*--------*/
+/*- Main -*/
+/*--------*/
+
+main {
+    .input-wrapper {
+        position: relative;
+        width: 500px;
+        margin: 50px auto;
+
+        input {
+            height: 60px;
+            width: 100%;
+            min-width: 100%;
+            padding: 0;
+            border-radius: 0;
+            line-height: 70px;
+            background-color: transparent;
+            color: #FFF;
+            font-size: 30px;
+            border: none;
+            outline: none;
+            border-bottom: 3px solid #333333;
+          
+            &:focus {
+                + .input-highlight {
+                    border-top: 3px solid #FBC91B;
+                }
+            }
+        }
+    }
+      
+    .input-highlight {
+        font-size: 30px;
+        user-select: none;
+        line-height: 70px;
+        border-top: 3px solid #FFF;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        max-width: 100%;
+        height: 0;
+        color: transparent;
+        overflow: hidden;
+    }
+}
+
+/*--------------*/
+/*- Animations -*/
+/*--------------*/
+
+/* Cursor blink */
 
 @keyframes blink {
     0%  { 
-        background-color: #CCC; 
+        background-color: $cursor-color; 
     }
     49% { 
-        background-color: #CCC; 
+        background-color: $cursor-color; 
     }
     50% { 
         background-color: transparent; 
@@ -114,9 +179,11 @@ header {
         background-color: transparent; 
     }
     100%  { 
-        background-color: #CCC; 
+        background-color: $cursor-color; 
     }
 }
+
+/* Initial fade-in */
 
 @keyframes fadein {
     from {

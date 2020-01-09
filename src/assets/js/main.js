@@ -74,7 +74,7 @@
                 }
             },
             "interactivity": {
-                "detect_on": "canvas",
+                "detect_on": "window",
                 "events": {
                     "onhover": {
                         "enable": true,
@@ -88,7 +88,7 @@
                 },
                 "modes": {
                     "grab": {
-                        "distance": 200,
+                        "distance": 150,
                         "line_linked": {
                             "opacity": 1
                         }
@@ -168,8 +168,13 @@
         }
     }
 
+    function handleInputChange(){
+        $(".input-wrapper > span.input-highlight").text($(this).val());
+    }
+    
     $(document).ready(function(){
         initParticles();
         setTimeout(type, newTextDelay + 250);
+        $(".input-wrapper > input").on("input", handleInputChange);
     });
 })(jQuery);
