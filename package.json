@@ -6,10 +6,11 @@
   "author": "Chris (NullDev) & Joseph (Azgeb)",
   "license": "MIT",
   "scripts": {
-    "build": "./node_modules/.bin/node-sass ./src/assets/scss/main.scss ./src/assets/css/main.css --output-style compressed --source-map true --source-map-contents scss",
-    "dev": "./node_modules/.bin/node-sass -w ./src/assets/scss/main.scss ./src/assets/css/main.css --output-style compressed --source-map true --source-map-contents scss"
+    "build": "./node_modules/.bin/uglifyjs-folder ./src/assets/es6 -o ./src/assets/js -e && ./node_modules/.bin/node-sass ./src/assets/scss/main.scss ./src/assets/css/main.css --output-style compressed --source-map true --source-map-contents scss",
+    "dev": "./node_modules/.bin/uglifyjs-folder ./src/assets/es6 -o ./src/assets/js -e && ./node_modules/.bin/node-sass -w ./src/assets/scss/main.scss ./src/assets/css/main.css --output-style compressed --source-map true --source-map-contents scss"
   },
   "dependencies": {
-    "node-sass": "^4.13.0"
+    "node-sass": "^4.13.0",
+    "uglifyjs-folder": "^1.5.1"
   }
 }
