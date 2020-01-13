@@ -81,5 +81,7 @@
         $("a").attr("rel", function(){
             if (this.host && this.host != location.host) return "noopener";
         });
+
+        $(".copyright-year").text((new Date().getFullYear()));
     });
 })(jQuery);
