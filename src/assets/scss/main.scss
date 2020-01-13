@@ -28,6 +28,13 @@ body, html {
     background: $site-color;
 }
 
+.fadein {
+    animation: fadein 2.5s;
+    -moz-animation: fadein 2.5s;
+    -webkit-animation: fadein 2.5s;
+    -o-animation: fadein 2.5s;
+}
+
 /*----------+/
 /*- Header -*/
 /*----------*/
@@ -61,11 +68,6 @@ header {
         img {
             width: 210px;
             height: auto;
-
-            animation: fadein 2s;
-            -moz-animation: fadein 2s;
-            -webkit-animation: fadein 2s;
-            -o-animation: fadein 2s;
         }
 
         p {
