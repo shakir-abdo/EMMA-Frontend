@@ -4,5 +4,8 @@
 # Built CSS
 src/assets/css/
 
+# Build JS
+src/assets/js
+
 # Node Modules
 node_modules/
