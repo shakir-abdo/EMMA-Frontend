@@ -1,8 +1,8 @@
 <svg width="1000" height="1000" xmlns="http://www.w3.org/2000/svg">
     <metadata>Copyright (c) EMMA</metadata>
     <g>
-        <g transform="rotate(90 490.00000000000006,510)">
-            <path fill="#3d3d3d" d="m980,20l-588,588l-392,392l980,0l0,-980z"/>
+        <g transform="rotate(90 490, 510)">
+            <path fill="#3D3D3D" d="m980, 20l-588, 588l-392, 392l980, 0l0, -980z"/>
         </g>
     </g>
 </svg>
