@@ -6,26 +6,17 @@
     // = Copyright (c) EMMA = //
     // ====================== //
 
-    function debounce(fn, wait, immediate){
-        var timeout;
-
-        return function(){
+    function debounce(fn, delay){
+        var debounceTimer;
+        return function(){ 
             var context = this;
             var args = arguments;
-
-            var later = function(){
-                timeout = null;
-                if (!immediate) fn.apply(context, args);
-            };
-
-            var callNow = immediate && !timeout;
-
-            clearTimeout(timeout);
-            timeout = setTimeout(later, wait);
-
-            if (callNow) fn.apply(context, args);
-        }
-    }
+            clearTimeout(debounceTimer);
+            debounceTimer = setTimeout(function(){
+                fn.apply(context, args);
+            }, delay);
+        } 
+    } 
 
     function getEscapedFromInput(){
         var val = $(".input-wrapper > input").val();
