@@ -101,7 +101,7 @@ header {
         position: absolute;
         height: 120px;
         width: 50%;
-        bottom: 0;
+        bottom: -1px;
         z-index: 30;
 
         &.left-svg {
