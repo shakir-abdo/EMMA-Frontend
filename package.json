@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "node-sass": "^6.0.1",
-    "selenium-webdriver": "^4.0.0-alpha.5",
-    "uglifyjs-folder": "^1.5.1"
+    "selenium-webdriver": "^4.0.0",
+    "uglifyjs-folder": "^3.0.0"
   }
 }
