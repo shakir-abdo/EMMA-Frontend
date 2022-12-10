@@ -11,7 +11,7 @@
     "test": "node ./test/query.test.js"
   },
   "dependencies": {
-    "node-sass": "^7.0.0",
+    "node-sass": "^7.0.3",
     "selenium-webdriver": "^4.0.0",
     "uglifyjs-folder": "^3.0.0"
   }
